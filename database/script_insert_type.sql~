@@ -2,22 +2,22 @@
 # date 08-20-2014
 # version 0.0.1
 
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("MÃE", "MÃE");
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("PAI", "PAI");
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("IRMÃ", "IRMÃ");
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("IRMÃO", "IRMÃO");
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("TIA", "TIA");
-INSERT INTO tipo_familiar (tipo, descricao) VALUES ("TIO", "TIO");
+INSERT INTO relative_types (type, description) VALUES ("MÃE", "MÃE");
+INSERT INTO relative_types (type, description) VALUES ("PAI", "PAI");
+INSERT INTO relative_types (type, description) VALUES ("IRMÃ", "IRMÃ");
+INSERT INTO relative_types (type, description) VALUES ("IRMÃO", "IRMÃO");
+INSERT INTO relative_types (type, description) VALUES ("TIA", "TIA");
+INSERT INTO relative_types (type, description) VALUES ("TIO", "TIO");
 
-INSERT INTO tipo_identificacao (tipo, descricao) VALUES ("NN", "Numero de cadastro usado no Laboratorio de Patologia Clinica");
-INSERT INTO tipo_identificacao (tipo, descricao) VALUES ("Codigo da familia", "Codificação utilizada para cadastro de familia");
+INSERT INTO contact_types (type, description) VALUES ("telefone residencial", "telefone residencial");
+INSERT INTO contact_types (type, description) VALUES ("celular", "celular");
+INSERT INTO contact_types (type, description) VALUES ("email", "email");
 
-INSERT INTO tipo_amostra (tipo, descricao) VALUES ("SORO", "SORO");
-INSERT INTO tipo_amostra (tipo, descricao) VALUES ("SALIVA", "SALIVA");
-INSERT INTO tipo_amostra (tipo, descricao) VALUES ("TECIDO", "TECIDO");
+INSERT INTO identification_types (type, description) VALUES ("NN", "Numero de cadastro usado no Laboratorio de Patologia Clinica");
+INSERT INTO identification_types (type, description) VALUES ("Codigo da familia", "Codificação utilizada para cadastro de familia");
 
-INSERT INTO tipo_armazenamento (tipo, descricao) VALUES ("TIO", "TIO");
-INSERT INTO tipo_armazenamento (tipo, descricao) VALUES ("TIO", "TIO");
-INSERT INTO tipo_armazenamento (tipo, descricao) VALUES ("TIO", "TIO");
-INSERT INTO tipo_armazenamento (tipo, descricao) VALUES ("TIO", "TIO");
-INSERT INTO tipo_armazenamento (tipo, descricao) VALUES ("TIO", "TIO");
+INSERT INTO sample_types (type, description) VALUES ("SORO", "SORO");
+INSERT INTO sample_types (type, description) VALUES ("SALIVA", "SALIVA");
+INSERT INTO sample_types (type, description) VALUES ("TECIDO", "TECIDO");
+
+INSERT INTO storage_types (type, description) VALUES ("PASTA", "Pasta de plastico");
