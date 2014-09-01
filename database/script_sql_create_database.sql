@@ -7,8 +7,8 @@ USE DASbase;
 
 CREATE TABLE relatives (
 id INT(10) NOT NULL AUTO_INCREMENT,
-fk_individuals INT(10) NOT NULL ,
-fk_relative_types INT(10) NOT NULL ,
+individuals_id INT(10) NOT NULL ,
+relative_types_id INT(10) NOT NULL ,
 id_unique_individual VARCHAR(255) NOT NULL ,
 PRIMARY KEY (id)
 ) ENGINE = innodb;
@@ -22,7 +22,7 @@ PRIMARY KEY (id)
 
 CREATE TABLE individuals (
 id  INT(10) NOT NULL AUTO_INCREMENT,
-fk_contacts INT(10) NOT NULL,
+contacts_id INT(10) NOT NULL,
 name VARCHAR(255) NOT NULL ,
 adress VARCHAR(255) ,
 PRIMARY KEY (id)
@@ -30,7 +30,7 @@ PRIMARY KEY (id)
 
 CREATE TABLE contacts (
 id  INT(10) NOT NULL AUTO_INCREMENT,
-fk_contact_types INT(10) NOT NULL,
+contact_types_id INT(10) NOT NULL,
 contact_information VARCHAR(255) ,
 PRIMARY KEY (id)
 ) ENGINE = innodb;
@@ -44,8 +44,8 @@ PRIMARY KEY (id)
 
 CREATE TABLE identifications (
 id  INT(10) NOT NULL AUTO_INCREMENT,
-fk_individuals INT(10) NOT NULL ,
-fk_identification_types INT(10) NOT NULL ,
+individuals_id INT(10) NOT NULL ,
+identification_types_id INT(10) NOT NULL ,
 identification_code VARCHAR(255) ,
 PRIMARY KEY (id)
 ) ENGINE = innodb;
@@ -59,9 +59,9 @@ PRIMARY KEY (id)
 
 CREATE TABLE samples (
 id  INT(10) NOT NULL AUTO_INCREMENT,
-fk_identifications INT(10) NOT NULL ,
-fk_sample_types INT(10) NOT NULL ,
-fk_collects INT(10) NOT NULL ,
+identifications_id INT(10) NOT NULL ,
+sample_types_id INT(10) NOT NULL ,
+collects_id INT(10) NOT NULL ,
 quantity int(10) ,
 PRIMARY KEY (id)
 ) ENGINE = innodb;
@@ -75,8 +75,8 @@ PRIMARY KEY (id)
 
 CREATE TABLE storages (
 id  INT(10) NOT NULL AUTO_INCREMENT,
-fk_samples INT(10) NOT NULL ,
-fk_storage_types INT(10) NOT NULL ,
+samples_id INT(10) NOT NULL ,
+storage_types_id INT(10) NOT NULL ,
 identification_code VARCHAR(255) ,
 PRIMARY KEY (id)
 ) ENGINE = innodb;
@@ -95,18 +95,18 @@ PRIMARY KEY (id)
 ) ENGINE = innodb;
 
 
-ALTER TABLE relatives ADD CONSTRAINT fk_relatives_individuals FOREIGN KEY (fk_individuals) REFERENCES individuals (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE relatives ADD CONSTRAINT fk_relatives_relative_types FOREIGN KEY (fk_relative_types) REFERENCES relative_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE relatives ADD CONSTRAINT fk_relatives_individuals FOREIGN KEY (individuals_id) REFERENCES individuals (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE relatives ADD CONSTRAINT fk_relatives_relative_types FOREIGN KEY (relative_types_id) REFERENCES relative_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE individuals ADD CONSTRAINT fk_individuals_contacts FOREIGN KEY (fk_contacts) REFERENCES contacts (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE contacts ADD CONSTRAINT fk_contacts_contact_types FOREIGN KEY (fk_contact_types) REFERENCES contact_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE individuals ADD CONSTRAINT fk_individuals_contacts FOREIGN KEY (contacts_id) REFERENCES contacts (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE contacts ADD CONSTRAINT fk_contacts_contact_types FOREIGN KEY (contact_types_id) REFERENCES contact_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE identifications ADD CONSTRAINT fk_identifications_individuals FOREIGN KEY (fk_individuals) REFERENCES individuals (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE identifications ADD CONSTRAINT fk_identifications_identification_types FOREIGN KEY (fk_identification_types) REFERENCES identification_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE samples ADD CONSTRAINT fk_samples_identifications FOREIGN KEY (fk_identifications) REFERENCES identifications (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE samples ADD CONSTRAINT fk_samples_sample_types FOREIGN KEY (fk_sample_types) REFERENCES sample_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE samples ADD CONSTRAINT fk_samples_collects FOREIGN KEY (fk_collects) REFERENCES collects (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE storages ADD CONSTRAINT fk_storages_samples FOREIGN KEY (fk_samples) REFERENCES samples (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE storages ADD CONSTRAINT fk_storage_types_storages FOREIGN KEY (fk_storage_types) REFERENCES storage_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE identifications ADD CONSTRAINT fk_identifications_individuals FOREIGN KEY (individuals_id) REFERENCES individuals (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE identifications ADD CONSTRAINT fk_identifications_identification_types FOREIGN KEY (identification_types_id) REFERENCES identification_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE samples ADD CONSTRAINT fk_samples_identifications FOREIGN KEY (identifications_id) REFERENCES identifications (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE samples ADD CONSTRAINT fk_samples_sample_types FOREIGN KEY (sample_types_id) REFERENCES sample_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE samples ADD CONSTRAINT fk_samples_collects FOREIGN KEY (collects_id) REFERENCES collects (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE storages ADD CONSTRAINT fk_storages_samples FOREIGN KEY (samples_id) REFERENCES samples (id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE storages ADD CONSTRAINT fk_storage_types_storages FOREIGN KEY (storage_types_id) REFERENCES storage_types (id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
